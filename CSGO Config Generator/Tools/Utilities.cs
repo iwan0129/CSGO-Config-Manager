@@ -27,6 +27,5 @@ namespace CSGO_Config_Generator.Tools
                 }
             }
         }
-
     }
 }
