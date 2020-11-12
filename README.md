@@ -13,7 +13,7 @@
 <br />
 <p align="center">
   <!--
-  <a href="https://github.com/iwan0129/CSGO-Config-Generator">
+  <a href="https://github.com/iwan0129/CSGO-Config-Manager">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
   -->
