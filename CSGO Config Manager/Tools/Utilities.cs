@@ -1,10 +1,10 @@
-﻿using CSGO_Config_Generator.Data;
-using CSGO_Config_Generator.Models;
+﻿using CSGO_Config_Manager.Data;
+using CSGO_Config_Manager.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSGO_Config_Generator.Tools
+namespace CSGO_Config_Manager.Tools
 {
     internal static class Utilities
     {

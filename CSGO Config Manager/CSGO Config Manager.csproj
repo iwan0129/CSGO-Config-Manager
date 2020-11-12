@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1195C8BB-DBDB-43B9-BB33-2D86AE13C149}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CSGO_Config_Generator</RootNamespace>
-    <AssemblyName>CSGO Config Generator</AssemblyName>
+    <RootNamespace>CSGO_Config_Manager</RootNamespace>
+    <AssemblyName>CSGO Config Manager</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <LangVersion>8.0</LangVersion>
     <FileAlignment>512</FileAlignment>

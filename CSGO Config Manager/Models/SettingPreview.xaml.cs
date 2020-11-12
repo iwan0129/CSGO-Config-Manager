@@ -1,8 +1,8 @@
-﻿using CSGO_Config_Generator.Data;
+﻿using CSGO_Config_Manager.Data;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace CSGO_Config_Generator.Models
+namespace CSGO_Config_Manager.Models
 {
     /// <summary>
     /// Interaction logic for SettingPreview.xaml

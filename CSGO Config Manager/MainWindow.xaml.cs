@@ -1,13 +1,13 @@
-﻿using CSGO_Config_Generator.Data;
-using CSGO_Config_Generator.Models;
-using CSGO_Config_Generator.Tools;
+﻿using CSGO_Config_Manager.Data;
+using CSGO_Config_Manager.Models;
+using CSGO_Config_Manager.Tools;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace CSGO_Config_Generator
+namespace CSGO_Config_Manager
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

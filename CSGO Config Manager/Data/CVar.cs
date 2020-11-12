@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSGO_Config_Generator.Data
+namespace CSGO_Config_Manager.Data
 {
     internal struct CVar
     {

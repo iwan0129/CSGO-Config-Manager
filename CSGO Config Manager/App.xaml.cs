@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace CSGO_Config_Generator
+namespace CSGO_Config_Manager
 {
     /// <summary>
     /// Interaction logic for App.xaml

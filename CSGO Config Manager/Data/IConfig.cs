@@ -1,4 +1,4 @@
-﻿namespace CSGO_Config_Generator.Data
+﻿namespace CSGO_Config_Manager.Data
 {
     internal interface IConfig
     {
