@@ -18,8 +18,6 @@ namespace CSGO_Config_Generator
 
         private readonly List<SettingPreview> Settings = new List<SettingPreview>();
 
-        private SettingPreview SelectedSetting { get; set; }
-
         private readonly OpenFileDialog OFD = new OpenFileDialog()
         {
             Filter = "Config Files |*.cfg"
@@ -29,6 +27,8 @@ namespace CSGO_Config_Generator
         {
             Filter = "Config Files |*.cfg"
         };
+
+        private SettingPreview SelectedSetting { get; set; }
 
         public MainWindow()
         {
