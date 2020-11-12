@@ -30,14 +30,9 @@
                 <ContextMenu FontSize="26">
 
                     <MenuItem
-                        Name="EditButton"
-                        Click="EditButton_Click"
-                        Header="Edit Cvar" />
-
-                    <MenuItem
                         Name="AddButton"
                         Click="AddButton_Click"
-                        Header="Add Cvar" />
+                        Header="Add Value" />
 
                 </ContextMenu>
 

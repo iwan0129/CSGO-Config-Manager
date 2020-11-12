@@ -78,10 +78,6 @@ namespace CSGO_Config_Generator
             SettingsView.Items.Refresh();
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void SettingsView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(SettingsView, (DependencyObject)e.OriginalSource);
