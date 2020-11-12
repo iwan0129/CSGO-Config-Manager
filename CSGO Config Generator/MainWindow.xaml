@@ -59,12 +59,12 @@
                 <MenuItem
                     Name="LoadButton"
                     Click="LoadButton_Click"
-                    Header="Load" />
+                    Header="Load" Foreground="Black" Background="{x:Null}" />
 
                 <MenuItem
                     Name="SaveButton"
                     Click="SaveButton_Click"
-                    Header="Save" />
+                    Header="Save" Background="{x:Null}" Foreground="Black" />
 
             </MenuItem>
 

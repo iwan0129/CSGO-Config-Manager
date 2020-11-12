@@ -5,12 +5,12 @@ namespace CSGO_Config_Generator.Data
     internal struct CVar
     {
         public string Name { get; set; }
-        public object Value { get; set; }
+        public string Value { get; set; }
 
         public CVar(string name, object value)
         {
             Name = name;
-            Value = value;
+            Value = value.ToString();
         }
 
         public CVar(string data)
@@ -19,7 +19,14 @@ namespace CSGO_Config_Generator.Data
 
             Name = dataTypes[0];
 
-            Value = dataTypes[1];
+            if (dataTypes.Length == 2)
+            {
+                Value = dataTypes[1]?.Replace("\"", null).Replace("\t", null);
+            }
+            else
+            {
+                Value = null;
+            }
         }
 
         public static bool operator==(CVar cvar1, CVar cvar2)
@@ -46,7 +53,7 @@ namespace CSGO_Config_Generator.Data
         {
             if (Value != null)
             {
-                return $"{Name} \"{Value}\"\n";
+                return $"{Name} \"{Value}\"";
             }
 
             return $"{Name}\n";
