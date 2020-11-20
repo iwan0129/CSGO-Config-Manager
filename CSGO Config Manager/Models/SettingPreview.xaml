@@ -26,7 +26,7 @@
             IsReadOnly="True"
             PreviewKeyDown="NameBox_PreviewKeyDown"
             Text="viewmodel_offset_x"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" TextChanged="NameBox_TextChanged" />
 
         <TextBox
             x:Name="ValueBox"
@@ -40,7 +40,7 @@
             Foreground="White"
             IsReadOnly="True"
             Text="2"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" TextChanged="ValueBox_TextChanged" />
 
     </Grid>
     

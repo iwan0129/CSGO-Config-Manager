@@ -23,9 +23,15 @@ namespace CSGO_Config_Manager.Models
             set => ValueBox.IsReadOnly = value;
         }
 
+        public new string Name => NameBox.Text;
+
+        internal CVar CVar;
+
         internal SettingPreview(CVar cvar)
         {
             InitializeComponent();
+
+            CVar = cvar;
 
             if (string.IsNullOrEmpty(cvar.Name))
             {
@@ -34,7 +40,7 @@ namespace CSGO_Config_Manager.Models
 
             NameBox.Text = cvar.Name;
 
-            ValueBox.Text = cvar.Value.ToString();
+            ValueBox.Text = cvar.Value;
         }
 
         private void NameBox_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -43,6 +49,16 @@ namespace CSGO_Config_Manager.Models
             {
                 NameBox.IsReadOnly = true;
             }
+        }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CVar.Name = NameBox.Text;
+        }
+
+        private void ValueBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CVar.Value = ValueBox.Text;
         }
     }
 }

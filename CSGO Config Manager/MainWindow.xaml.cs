@@ -3,6 +3,7 @@ using CSGO_Config_Manager.Models;
 using CSGO_Config_Manager.Tools;
 using Microsoft.Win32;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,18 +16,19 @@ namespace CSGO_Config_Manager
     public partial class MainWindow : Window
     {
         private readonly Config Config;
-
         private readonly List<SettingPreview> Settings = new List<SettingPreview>();
-
         private readonly OpenFileDialog OFD = new OpenFileDialog()
         {
             Filter = "Config Files |*.cfg"
         };
-
         private readonly SaveFileDialog SFD = new SaveFileDialog()
         {
             Filter = "Config Files |*.cfg"
         };
+
+        private ICollection<SettingPreview> SearchedSettings;
+
+        private bool FirstTime = true;
 
         private SettingPreview SelectedSetting { get; set; }
 
@@ -51,7 +53,7 @@ namespace CSGO_Config_Manager
 
                 Settings.Clear();
 
-                Config.Read(OFD.FileName);
+                Config.Load(OFD.FileName);
 
                 Settings.AddCVars(Config.CVars);
 
@@ -63,7 +65,9 @@ namespace CSGO_Config_Manager
         {
             if (SFD?.ShowDialog() ?? false)
             {
-                Config.Write(SFD.FileName);
+                Config.SyncWith(from setting in Settings select setting.CVar);
+
+                Config.Save(SFD.FileName);
             }
         }
 
@@ -74,6 +78,13 @@ namespace CSGO_Config_Manager
             Config.Add(cvar);
 
             Settings.AddCVars(cvar);
+
+            if (SettingsView.ItemsSource != Settings)
+            {
+                SettingsView.ItemsSource = Settings;
+
+                SearchBox.Text = null;
+            }
 
             SettingsView.Items.Refresh();
         }
@@ -89,14 +100,61 @@ namespace CSGO_Config_Manager
                 switch (e.ChangedButton)
                 {
                     case MouseButton.Left:
+
                         SelectedSetting.IsNameReadOnly = SelectedSetting.IsValueReadOnly = false;
+
                         break;
 
                     case MouseButton.Right:
+
                         SelectedSetting.IsNameReadOnly = SelectedSetting.IsValueReadOnly = true;
+
                         break;
                 }
             }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Settings.Count > 0)
+            {
+                if (!string.IsNullOrWhiteSpace(SearchBox.Text))
+                {
+                    SearchedSettings = Settings.Where(setting => setting.Name.Contains(SearchBox.Text)).ToList();
+
+                    SettingsView.ItemsSource = SearchedSettings;
+
+                    SettingsView.Items.Refresh();
+                }
+                else
+                {
+                    SettingsView.ItemsSource = Settings;
+
+                    SettingsView.Items.Refresh();
+                }
+            }
+        }
+
+        private void SearchBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (FirstTime)
+            {
+                SearchBox.Text = null;
+
+                FirstTime = false;
+            }
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (SettingPreview setting in SettingsView.SelectedItems)
+            {
+                Settings.Remove(setting);
+
+                SearchedSettings?.Remove(setting);
+            }
+
+            SettingsView.Items.Refresh();
         }
     }
 }

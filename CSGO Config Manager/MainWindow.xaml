@@ -8,22 +8,36 @@
     x:Name="MainWin"
     Title="CSGO Config Manager"
     Width="800"
-    Height="450"
+    Height="190.5"
+    MinWidth="800"
+    MinHeight="390"
     Background="#FF302C2C"
     SnapsToDevicePixels="True"
     mc:Ignorable="d">
 
     <Grid>
 
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="45*" MaxHeight="45" />
+
+            <RowDefinition Height="50*" MaxHeight="50" />
+
+            <RowDefinition Height="338*" />
+
+        </Grid.RowDefinitions>
+
         <ListView
             x:Name="SettingsView"
-            Margin="0,38,0,0"
+            Grid.Row="2"
+            Margin="0,0.042,0,0"
             HorizontalContentAlignment="Stretch"
             Background="{x:Null}"
             ItemsSource="{Binding IsAsync=True}"
+            PreviewMouseDown="SettingsView_PreviewMouseDown"
             SelectionMode="Single"
             VirtualizingPanel.IsVirtualizing="True"
-            VirtualizingPanel.VirtualizationMode="Recycling" PreviewMouseDown="SettingsView_PreviewMouseDown">
+            VirtualizingPanel.VirtualizationMode="Recycling">
 
             <ListView.ContextMenu>
 
@@ -34,6 +48,11 @@
                         Click="AddButton_Click"
                         Header="Add Value" />
 
+                    <MenuItem
+                        Name="RemoveButton"
+                        Click="RemoveButton_Click"
+                        Header="Remove Value" />
+
                 </ContextMenu>
 
             </ListView.ContextMenu>
@@ -41,9 +60,7 @@
         </ListView>
 
         <Menu
-            Width="792"
-            Height="38"
-            HorizontalAlignment="Left"
+            Grid.Row="0"
             VerticalAlignment="Top"
             Background="#FF292727"
             FontSize="26"
@@ -53,17 +70,37 @@
 
                 <MenuItem
                     Name="LoadButton"
+                    Background="{x:Null}"
                     Click="LoadButton_Click"
-                    Header="Load" Foreground="Black" Background="{x:Null}" />
+                    Foreground="Black"
+                    Header="Load" />
 
                 <MenuItem
                     Name="SaveButton"
+                    Background="{x:Null}"
                     Click="SaveButton_Click"
-                    Header="Save" Background="{x:Null}" Foreground="Black" />
+                    Foreground="Black"
+                    Header="Save" />
 
             </MenuItem>
 
         </Menu>
+
+        <TextBox
+            x:Name="SearchBox"
+            Grid.Row="1"
+            Height="32"
+            Margin="0,5,0,0"
+            VerticalAlignment="Top"
+            Background="{x:Null}"
+            CaretBrush="White"
+            FontSize="22"
+            Foreground="White"
+            PreviewMouseDown="SearchBox_PreviewMouseDown"
+            Text="Enter setting to search for"
+            TextAlignment="Center"
+            TextChanged="SearchBox_TextChanged"
+            TextWrapping="Wrap" />
 
     </Grid>
 
