@@ -21,7 +21,7 @@
   <h3 align="center">CSGO Config Manager</h3>
 
   <p align="center">
-    Tool to Generate and Manage CSGO Config File
+    Tool to Generate and Manage CSGO Config Files
     <br />
     <a href="https://github.com/iwan0129/CSGO-Config-Manager"><strong>Explore the docs »</strong></a>
     <br />
@@ -53,7 +53,7 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Tool to Generate and Manage CSGO Config File
+Tool to Generate and Manage CSGO Config Files
 
 ### Built With
 .NET Framework 4.5 or Higher
