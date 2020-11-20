@@ -53,7 +53,7 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Generates Passwords and SerialKeys
+Tool to Generate and Manage CSGO Config File
 
 ### Built With
 .NET Framework 4.5 or Higher
