@@ -8,7 +8,7 @@ namespace CSGO_Config_Manager.Tools
 {
     internal static class Utilities
     {
-        public static void AddCVars<CVars>(this IList<SettingPreview> settings, CVars cvars) where CVars: IEnumerable<CVar>
+        public static void AddCVars<CVars>(this IList<SettingPreview> settings, CVars cvars) where CVars: notnull, IEnumerable<CVar>
         {
             foreach (CVar cvar in cvars)
             {
@@ -44,7 +44,7 @@ namespace CSGO_Config_Manager.Tools
             return new string(charData, 0, offset);
         }
 
-        public static byte[] ConvertToBytes<CVars>(this CVars cvars) where CVars: IEnumerable<CVar>
+        public static byte[] ConvertToBytes<CVars>(this CVars cvars) where CVars: notnull, IEnumerable<CVar>
         {
             StringBuilder strBuilder = new StringBuilder();
 

@@ -44,7 +44,7 @@ namespace CSGO_Config_Manager.Data
             }
         }
 
-        public void SyncWith<CVars>(CVars cvars) where CVars: IEnumerable<CVar>
+        public void SyncWith<CVars>(CVars cvars) where CVars: notnull, IEnumerable<CVar>
         {
             this.CVars = cvars.ToList();
         }
