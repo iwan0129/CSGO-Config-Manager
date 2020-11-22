@@ -115,6 +115,11 @@ namespace CSGO_Config_Manager.Data
         {
             using FileStream fstream = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
 
+            if (fstream.Length > 0)
+            {
+                fstream.SetLength(0);
+            }
+
             byte[] data = CVars.ConvertToBytes();
 
             int offset = 0;
@@ -176,6 +181,11 @@ namespace CSGO_Config_Manager.Data
         public void Save(string filePath)
         {
             using FileStream fstream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+
+            if (fstream.Length > 0)
+            {
+                fstream.SetLength(0);
+            }
 
             byte[] data = CVars.ConvertToBytes();
 
