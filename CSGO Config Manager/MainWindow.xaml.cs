@@ -16,7 +16,7 @@ namespace CSGO_Config_Manager
     public partial class MainWindow : Window
     {
         private readonly Config Config;
-        private readonly List<SettingPreview> Settings = new List<SettingPreview>();
+        private readonly List<VariablePreview> Settings = new List<VariablePreview>();
         private readonly OpenFileDialog OFD = new OpenFileDialog()
         {
             Filter = "Config Files |*.cfg"
@@ -26,11 +26,11 @@ namespace CSGO_Config_Manager
             Filter = "Config Files |*.cfg"
         };
 
-        private ICollection<SettingPreview> SearchedSettings;
+        private ICollection<VariablePreview> SearchedSettings;
 
         private bool FirstTime = true;
 
-        private SettingPreview SelectedSetting { get; set; }
+        private VariablePreview SelectedSetting { get; set; }
 
         public MainWindow()
         {
@@ -38,7 +38,7 @@ namespace CSGO_Config_Manager
 
             Config = new Config();
 
-            Settings.AddCVars(Config.CVars);
+            Settings.AddVariables(Config.CVars);
 
             SettingsView.ItemsSource = Settings;
 
@@ -55,7 +55,7 @@ namespace CSGO_Config_Manager
 
                 Config.Load(OFD.FileName);
 
-                Settings.AddCVars(Config.CVars);
+                Settings.AddVariables(Config.CVars);
 
                 SettingsView.Items.Refresh();
             }
@@ -77,7 +77,7 @@ namespace CSGO_Config_Manager
 
             Config.Add(cvar);
 
-            Settings.AddCVars(cvar);
+            Settings.AddVariables(cvar);
 
             if (SettingsView.ItemsSource != Settings)
             {
@@ -95,7 +95,7 @@ namespace CSGO_Config_Manager
 
             if (lbItem != null)
             {
-                SelectedSetting = (SettingPreview)lbItem.Content;
+                SelectedSetting = (VariablePreview)lbItem.Content;
 
                 switch (e.ChangedButton)
                 {
@@ -147,7 +147,7 @@ namespace CSGO_Config_Manager
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (SettingPreview setting in SettingsView.SelectedItems)
+            foreach (VariablePreview setting in SettingsView.SelectedItems)
             {
                 Settings.Remove(setting);
 

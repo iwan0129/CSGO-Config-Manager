@@ -73,14 +73,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Models\SettingPreview.xaml">
+    <Page Include="Models\VariablePreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\SettingPreview.xaml.cs">
-      <DependentUpon>SettingPreview.xaml</DependentUpon>
+    <Compile Include="Models\VariablePreview.xaml.cs">
+      <DependentUpon>VariablePreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

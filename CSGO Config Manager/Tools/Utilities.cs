@@ -1,32 +1,24 @@
 ﻿using CSGO_Config_Manager.Data;
 using CSGO_Config_Manager.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CSGO_Config_Manager.Tools
 {
     internal static class Utilities
     {
-        public static void AddCVars<CVars>(this IList<SettingPreview> settings, CVars cvars) where CVars: notnull, IEnumerable<CVar>
+        public static void AddVariables<CVars>(this IList<VariablePreview> settings, CVars cvars) where CVars: notnull, IEnumerable<CVar>
         {
             foreach (CVar cvar in cvars)
             {
-                if (cvar.Value != null)
-                {
-                    settings.Add(new SettingPreview(cvar));
-                }
+                settings.Add(new VariablePreview(cvar));
             }
         }
 
-        public static void AddCVars(this IList<SettingPreview> settings, params CVar[] cvars)
+        public static void AddVariables(this IList<VariablePreview> settings, params CVar[] cvars)
         {
             foreach (CVar cvar in cvars)
             {
-                if (cvar.Value != null)
-                {
-                    settings.Add(new SettingPreview(cvar));
-                }
+                settings.Add(new VariablePreview(cvar));
             }
         }
 
@@ -42,36 +34,6 @@ namespace CSGO_Config_Manager.Tools
             }
 
             return new string(charData, 0, offset);
-        }
-
-        public static byte[] ConvertToBytes<CVars>(this CVars cvars) where CVars: notnull, IEnumerable<CVar>
-        {
-            StringBuilder strBuilder = new StringBuilder();
-
-            int offset = 0;
-
-            int length = cvars.Count() - 1;
-
-            foreach (CVar cvar in cvars)
-            {
-                if (offset++ < length)
-                {
-                    strBuilder.Append(cvar).Append("\n");
-                }
-                else
-                {
-                    strBuilder.Append(cvar);
-                }
-            }
-
-            byte[] data = new byte[strBuilder.Length];
-
-            for (offset = 0; offset < strBuilder.Length; offset++)
-            {
-                data[offset] = (byte)strBuilder[offset];
-            }
-
-            return data;
         }
     }
 }

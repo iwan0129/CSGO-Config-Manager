@@ -7,7 +7,7 @@ namespace CSGO_Config_Manager.Models
     /// <summary>
     /// Interaction logic for SettingPreview.xaml
     /// </summary>
-    public partial class SettingPreview : UserControl
+    public partial class VariablePreview : UserControl
     {
         public bool IsNameReadOnly
         {
@@ -27,7 +27,7 @@ namespace CSGO_Config_Manager.Models
 
         internal CVar CVar;
 
-        internal SettingPreview(CVar cvar)
+        internal VariablePreview(CVar cvar)
         {
             InitializeComponent();
 

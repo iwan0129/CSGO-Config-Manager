@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace CSGO_Config_Manager.Data
 {
@@ -110,7 +111,7 @@ namespace CSGO_Config_Manager.Data
                 CVars.Add(new CVar(cvarData));
             }
         }
-     
+
         public void Save()
         {
             using FileStream fstream = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
@@ -120,7 +121,7 @@ namespace CSGO_Config_Manager.Data
                 fstream.SetLength(0);
             }
 
-            byte[] data = CVars.ConvertToBytes();
+            byte[] data = ToArray();
 
             int offset = 0;
 
@@ -187,7 +188,7 @@ namespace CSGO_Config_Manager.Data
                 fstream.SetLength(0);
             }
 
-            byte[] data = CVars.ConvertToBytes();
+            byte[] data = ToArray();
 
             int offset = 0;
 
@@ -206,6 +207,36 @@ namespace CSGO_Config_Manager.Data
             {
                 Write(remaining > 65536 ? 65536 : remaining);
             }
+        }
+
+        public byte[] ToArray()
+        {
+            StringBuilder strBuilder = new StringBuilder();
+
+            int offset = 0;
+
+            int length = CVars.Count - 1;
+
+            foreach (CVar cvar in CVars)
+            {
+                if (offset++ < length)
+                {
+                    strBuilder.Append(cvar).Append("\n");
+                }
+                else
+                {
+                    strBuilder.Append(cvar);
+                }
+            }
+
+            byte[] data = new byte[strBuilder.Length];
+
+            for (offset = 0; offset < strBuilder.Length; offset++)
+            {
+                data[offset] = (byte)strBuilder[offset];
+            }
+
+            return data;
         }
     }
 }
