@@ -154,6 +154,13 @@ namespace CSGO_Config_Manager
                 SearchedSettings?.Remove(setting);
             }
 
+            if (SelectedSetting != null)
+            {
+                Settings.Remove(SelectedSetting);
+
+                SearchedSettings?.Remove(SelectedSetting);
+            }
+
             SettingsView.Items.Refresh();
         }
     }
