@@ -82,6 +82,20 @@
                     Foreground="Black"
                     Header="Save" />
 
+                <MenuItem
+                    Name="GenerateDefaultButton"
+                    Background="{x:Null}"
+                    Click="GenerateDefaultButton_Click"
+                    Foreground="Black"
+                    Header="Generate Default" />
+
+                <MenuItem
+                    Name="ClearButton"
+                    Background="{x:Null}"
+                    Click="ClearButton_Click"
+                    Foreground="Black"
+                    Header="Clear Config" />
+
             </MenuItem>
 
         </Menu>

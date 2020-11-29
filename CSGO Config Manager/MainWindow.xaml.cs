@@ -38,7 +38,7 @@ namespace CSGO_Config_Manager
 
             Config = new Config();
 
-            Settings.AddVariables(Config.CVars);
+            Settings.AddVariables(Config);
 
             SettingsView.ItemsSource = Settings;
 
@@ -55,7 +55,7 @@ namespace CSGO_Config_Manager
 
                 Config.Load(OFD.FileName);
 
-                Settings.AddVariables(Config.CVars);
+                Settings.AddVariables(Config);
 
                 SettingsView.Items.Refresh();
             }
@@ -160,6 +160,39 @@ namespace CSGO_Config_Manager
 
                 SearchedSettings?.Remove(SelectedSetting);
             }
+
+            SettingsView.Items.Refresh();
+        }
+
+        private void GenerateDefaultButton_Click(object sender, RoutedEventArgs e)
+        {
+            Config.GenerateDefault();
+
+            Settings.Clear();
+
+            SearchedSettings?.Clear();
+
+            Settings.AddVariables(Config);
+
+            SettingsView.Items.Refresh();
+
+            if (!FirstTime)
+            {
+                string searchVal = SearchBox.Text;
+
+                SearchBox.Text = null;
+
+                SearchBox.Text = searchVal;
+            }
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            Config.Clear();
+
+            Settings.Clear();
+
+            SearchedSettings?.Clear();
 
             SettingsView.Items.Refresh();
         }

@@ -6,9 +6,9 @@ namespace CSGO_Config_Manager.Tools
 {
     internal static class Utilities
     {
-        public static void AddVariables<CVars>(this IList<VariablePreview> settings, CVars cvars) where CVars: notnull, IEnumerable<CVar>
+        public static void AddVariables(this IList<VariablePreview> settings, IConfig config)
         {
-            foreach (CVar cvar in cvars)
+            foreach (CVar cvar in config.CVars)
             {
                 settings.Add(new VariablePreview(cvar));
             }

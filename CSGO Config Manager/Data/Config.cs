@@ -238,5 +238,60 @@ namespace CSGO_Config_Manager.Data
 
             return data;
         }
+
+        public void GenerateDefault()
+        {
+            if (CVars.Count > 0)
+            {
+                CVars.Clear();
+            }
+
+            CVars = new List<CVar>()
+            {
+                new CVar("viewmodel_fov", 68),
+                new CVar("viewmodel_offset_x", 2.5),
+                new CVar("viewmodel_offset_y", 0),
+                new CVar("viewmodel_offset_z", -1.5),
+                new CVar("viewmodel_recoil", 0),
+                new CVar("viewmodel_presetpos", 3),
+                new CVar("cl_viewmodel_shift_left_amt", 1.5),
+                new CVar("cl_viewmodel_shift_right_amt", 0.75),
+                new CVar("cl_bob_lower_amt", 21),
+                new CVar("cl_bobamt_lat", 0.33),
+                new CVar("cl_bobamt_vert", 0.14),
+                new CVar("cl_bobcycle", 0.98),
+                new CVar("cl_autowepswitch", 0),
+                new CVar("cl_autohelp", 0),
+                new CVar("cl_showhelp", 0),
+                new CVar("cl_cmdrate", 128),
+                new CVar("cl_updaterate", 128),
+                new CVar("cl_interp_ratio", 1),
+                new CVar("cl_interp", 0),
+                new CVar("cl_lagcompensation", 1),
+                new CVar("cl_predict", 1),
+                new CVar("cl_predictweapons", 1),
+                new CVar("cl_forcepreload", 1),
+                new CVar("tickrate", 128),
+                new CVar("m_rawinput", 1),
+                new CVar("m_mouseaccel1", 0),
+                new CVar("m_mouseaccel2", 0),
+                new CVar("fps_max", 0),
+                new CVar("r_dynamic", 1),
+                new CVar("r_drawtracers_firstperson", 0),
+                new CVar("r_eyegloss", 0),
+                new CVar("r_eyemove", 0),
+                new CVar("r_eyeshift_x", 0),
+                new CVar("r_eyeshift_y", 0),
+                new CVar("r_eyeshift_z", 0),
+                new CVar("r_eyesize", 0),
+                new CVar("snd_mix_async", 1),
+                new CVar("snd_mixahead", 0.025),
+                new CVar("snd_stream", 1),
+                new CVar("joystick", 1),
+                new CVar("joystick_force_disabled", 1),
+                new CVar("joystick_force_disabled_set_from_options", 1),
+                new CVar("host_writeconfig", null),
+            };
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace CSGO_Config_Manager.Data
         {
             Name = name;
 
-            Value = value.ToString();
+            Value = value?.ToString();
         }
 
         public CVar(string data)
