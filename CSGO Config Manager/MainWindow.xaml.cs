@@ -16,11 +16,14 @@ namespace CSGO_Config_Manager
     public partial class MainWindow : Window
     {
         private readonly Config Config;
+
         private readonly List<VariablePreview> Settings = new List<VariablePreview>();
+
         private readonly OpenFileDialog OFD = new OpenFileDialog()
         {
             Filter = "Config Files |*.cfg"
         };
+
         private readonly SaveFileDialog SFD = new SaveFileDialog()
         {
             Filter = "Config Files |*.cfg"

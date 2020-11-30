@@ -9,6 +9,8 @@ namespace CSGO_Config_Manager.Models
     /// </summary>
     public partial class VariablePreview : UserControl
     {
+        internal CVar CVar;
+
         public bool IsNameReadOnly
         {
             get => NameBox.IsReadOnly;
@@ -24,8 +26,6 @@ namespace CSGO_Config_Manager.Models
         }
 
         public new string Name => NameBox.Text;
-
-        internal CVar CVar;
 
         internal VariablePreview(CVar cvar)
         {
