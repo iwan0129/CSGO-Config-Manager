@@ -53,7 +53,7 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-[![product-screenshot]]
+![product-screenshot]
 
 Tool to Generate and Manage CSGO Config Files
 
