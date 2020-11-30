@@ -5,11 +5,6 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSGO Config Manager", "CSGO Config Manager\CSGO Config Manager.csproj", "{1195C8BB-DBDB-43B9-BB33-2D86AE13C149}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{58B1401C-DFA6-47D7-B7B6-4830E83AF6D6}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\CSGO Config Manager.png = ..\..\CSGO Config Manager.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
