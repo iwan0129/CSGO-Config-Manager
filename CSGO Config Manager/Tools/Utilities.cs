@@ -6,19 +6,19 @@ namespace CSGO_Config_Manager.Tools
 {
     internal static class Utilities
     {
-        public static void AddVariables(this IList<VariablePreview> settings, IConfig config)
+        public static void AddVariables(this IList<VariablePreview> variables, IConfig config)
         {
             foreach (CVar cvar in config.CVars)
             {
-                settings.Add(new VariablePreview(cvar));
+                variables.Add(new VariablePreview(cvar));
             }
         }
 
-        public static void AddVariables(this IList<VariablePreview> settings, params CVar[] cvars)
+        public static void AddVariables(this IList<VariablePreview> variables, params CVar[] cvars)
         {
             foreach (CVar cvar in cvars)
             {
-                settings.Add(new VariablePreview(cvar));
+                variables.Add(new VariablePreview(cvar));
             }
         }
 

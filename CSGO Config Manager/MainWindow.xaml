@@ -28,13 +28,13 @@
         </Grid.RowDefinitions>
 
         <ListView
-            x:Name="SettingsView"
+            x:Name="VariableView"
             Grid.Row="2"
             Margin="0,0.042,0,0"
             HorizontalContentAlignment="Stretch"
             Background="{x:Null}"
             ItemsSource="{Binding IsAsync=True}"
-            PreviewMouseDown="SettingsView_PreviewMouseDown"
+            PreviewMouseDown="VariableView_PreviewMouseDown"
             SelectionMode="Single"
             VirtualizingPanel.IsVirtualizing="True"
             VirtualizingPanel.VirtualizationMode="Recycling">
@@ -111,7 +111,7 @@
             FontSize="22"
             Foreground="White"
             PreviewMouseDown="SearchBox_PreviewMouseDown"
-            Text="Enter setting to search for"
+            Text="Enter variable to search for"
             TextAlignment="Center"
             TextChanged="SearchBox_TextChanged"
             TextWrapping="Wrap" />

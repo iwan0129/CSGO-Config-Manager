@@ -17,7 +17,7 @@ namespace CSGO_Config_Manager
     {
         private readonly Config Config;
 
-        private readonly List<VariablePreview> Settings = new List<VariablePreview>();
+        private readonly List<VariablePreview> Variables = new List<VariablePreview>();
 
         private readonly OpenFileDialog OFD = new OpenFileDialog()
         {
@@ -41,11 +41,11 @@ namespace CSGO_Config_Manager
 
             Config = new Config();
 
-            Settings.AddVariables(Config);
+            Variables.AddVariables(Config);
 
-            SettingsView.ItemsSource = Settings;
+            VariableView.ItemsSource = Variables;
 
-            SettingsView.Items.Refresh();
+            VariableView.Items.Refresh();
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
@@ -54,13 +54,13 @@ namespace CSGO_Config_Manager
             {
                 Config.Clear();
 
-                Settings.Clear();
+                Variables.Clear();
 
                 Config.Load(OFD.FileName);
 
-                Settings.AddVariables(Config);
+                Variables.AddVariables(Config);
 
-                SettingsView.Items.Refresh();
+                VariableView.Items.Refresh();
             }
         }
 
@@ -68,7 +68,7 @@ namespace CSGO_Config_Manager
         {
             if (SFD?.ShowDialog() ?? false)
             {
-                Config.SyncWith(from setting in Settings select setting.CVar);
+                Config.SyncWith(from setting in Variables select setting.CVar);
 
                 Config.Save(SFD.FileName);
             }
@@ -80,21 +80,21 @@ namespace CSGO_Config_Manager
 
             Config.Add(cvar);
 
-            Settings.AddVariables(cvar);
+            Variables.AddVariables(cvar);
 
-            if (SettingsView.ItemsSource != Settings)
+            if (VariableView.ItemsSource != Variables)
             {
-                SettingsView.ItemsSource = Settings;
+                VariableView.ItemsSource = Variables;
 
                 SearchBox.Text = null;
             }
 
-            SettingsView.Items.Refresh();
+            VariableView.Items.Refresh();
         }
 
-        private void SettingsView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void VariableView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(SettingsView, (DependencyObject)e.OriginalSource);
+            ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(VariableView, (DependencyObject)e.OriginalSource);
 
             if (lbItem != null)
             {
@@ -119,21 +119,21 @@ namespace CSGO_Config_Manager
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (Settings.Count > 0)
+            if (Variables.Count > 0)
             {
                 if (!string.IsNullOrWhiteSpace(SearchBox.Text))
                 {
-                    SearchedSettings = Settings.Where(setting => setting.Name.Contains(SearchBox.Text)).ToList();
+                    SearchedSettings = Variables.Where(setting => setting.Name.Contains(SearchBox.Text)).ToList();
 
-                    SettingsView.ItemsSource = SearchedSettings;
+                    VariableView.ItemsSource = SearchedSettings;
 
-                    SettingsView.Items.Refresh();
+                    VariableView.Items.Refresh();
                 }
                 else
                 {
-                    SettingsView.ItemsSource = Settings;
+                    VariableView.ItemsSource = Variables;
 
-                    SettingsView.Items.Refresh();
+                    VariableView.Items.Refresh();
                 }
             }
         }
@@ -150,34 +150,34 @@ namespace CSGO_Config_Manager
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (VariablePreview setting in SettingsView.SelectedItems)
+            foreach (VariablePreview setting in VariableView.SelectedItems)
             {
-                Settings.Remove(setting);
+                Variables.Remove(setting);
 
                 SearchedSettings?.Remove(setting);
             }
 
             if (SelectedSetting != null)
             {
-                Settings.Remove(SelectedSetting);
+                Variables.Remove(SelectedSetting);
 
                 SearchedSettings?.Remove(SelectedSetting);
             }
 
-            SettingsView.Items.Refresh();
+            VariableView.Items.Refresh();
         }
 
         private void GenerateDefaultButton_Click(object sender, RoutedEventArgs e)
         {
             Config.GenerateDefault();
 
-            Settings.Clear();
+            Variables.Clear();
 
             SearchedSettings?.Clear();
 
-            Settings.AddVariables(Config);
+            Variables.AddVariables(Config);
 
-            SettingsView.Items.Refresh();
+            VariableView.Items.Refresh();
 
             if (!FirstTime)
             {
@@ -193,11 +193,11 @@ namespace CSGO_Config_Manager
         {
             Config.Clear();
 
-            Settings.Clear();
+            Variables.Clear();
 
             SearchedSettings?.Clear();
 
-            SettingsView.Items.Refresh();
+            VariableView.Items.Refresh();
         }
     }
 }
