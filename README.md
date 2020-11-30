@@ -53,6 +53,8 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
+[![product-screenshot]]
+
 Tool to Generate and Manage CSGO Config Files
 
 ### Built With
@@ -117,7 +119,7 @@ uzunow0129@gmail.com
 [issues-url]: https://github.com/iwan0129/CSGO-Config-Manager/issues
 [license-shield]: https://img.shields.io/github/license/iwan0129/CSGO-Config-Manager.svg?style=for-the-badge
 [license-url]: https://github.com/iwan0129/CSGO-Config-Manager/blob/master/LICENSE
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: Images/Screenshot.png
 [repo-size]: https://img.shields.io/github/repo-size/iwan0129/CSGO-Config-Manager.svg?label=repository%20size&style=for-the-badge
 [commit-activity]: https://img.shields.io/github/commit-activity/m/iwan0129/CSGO-Config-Manager.svg?style=for-the-badge
 [commit-url]: https://github.com/iwan0129/CSGO-Config-Manager/commits/master
