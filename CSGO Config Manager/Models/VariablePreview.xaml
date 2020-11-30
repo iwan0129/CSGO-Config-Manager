@@ -32,7 +32,6 @@
         <TextBox
             x:Name="ValueBox"
             Grid.Column="1"
-            Height="47"
             MinWidth="318"
             VerticalAlignment="Top"
             Background="{x:Null}"
