@@ -79,7 +79,9 @@ git clone https://github.com/iwan0129/CSGO-Config-Manager.git
 
 ## Usage
 
-Start the program. If you want to add config value right click inside the white border to add new value. If you want to load or save your config press the config menu item
+Start the program.<br>
+If you want to add config value right click inside the white border to add new value.<br>
+If you want to load or save your config press the config menu item.<br>
 
 ## Roadmap
 
