@@ -45,7 +45,7 @@ namespace CSGO_Config_Manager.Data
             }
         }
 
-        public void SyncWith<CVars>(CVars cvars) where CVars: notnull, IEnumerable<CVar>
+        public void SyncWith<CVars>(CVars cvars) where CVars : notnull, IEnumerable<CVar>
         {
             this.CVars = cvars.ToList();
         }
@@ -81,32 +81,63 @@ namespace CSGO_Config_Manager.Data
         {
             using FileStream fstream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
 
-            byte[] data = new byte[fstream.Length];
+            StringBuilder strBuilder = new StringBuilder();
+
+            byte[] buffer = new byte[65536];
 
             int offset = 0;
 
-            int remaining = data.Length;
+            int remaining = (int)fstream.Length;
 
-            int Read(int bytes)
-            {
-                int readBytes = fstream.Read(data, offset, bytes);
-
-                remaining -= readBytes;
-
-                offset += readBytes;
-
-                return readBytes;
-            }
+            int readBytes;
 
             while (remaining > 0)
             {
-                if (Read(remaining > 65536 ? 65536 : remaining) == 0)
+                if ((readBytes = fstream.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    throw new Exception("Unable to read data");
+                    strBuilder.Append(buffer.ConvertToChars(0, readBytes));
+
+                    remaining -= readBytes;
+
+                    offset += readBytes;
                 }
             }
 
-            foreach (string cvarData in data.ConvertToStr().Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                CVars.Add(new CVar(cvarData));
+            }
+        }
+
+        public void Load(string filePath)
+        {
+            FilePath = filePath;
+
+            using FileStream fstream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+            StringBuilder strBuilder = new StringBuilder();
+
+            byte[] buffer = new byte[65536];
+
+            int offset = 0;
+
+            int remaining = (int)fstream.Length;
+
+            int readBytes;
+
+            while (remaining > 0)
+            {
+                if ((readBytes = fstream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    strBuilder.Append(buffer.ConvertToChars(0, readBytes));
+
+                    remaining -= readBytes;
+
+                    offset += readBytes;
+                }
+            }
+
+            foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
             {
                 CVars.Add(new CVar(cvarData));
             }
@@ -127,55 +158,15 @@ namespace CSGO_Config_Manager.Data
 
             int remaining = data.Length;
 
-            void Write(int bytes)
-            {
-                fstream.Write(data, offset, bytes);
-
-                remaining -= bytes;
-
-                offset += bytes;
-            }
-
             while (remaining > 0)
             {
-                Write(remaining > 65536 ? 65536 : remaining);
-            }
-        }
+                int currentChunk = remaining > 65536 ? 65536 : remaining;
 
-        public void Load(string filePath)
-        {
-            FilePath = filePath;
+                fstream.Write(data, offset, currentChunk);
 
-            using FileStream fstream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                remaining -= currentChunk;
 
-            byte[] data = new byte[fstream.Length];
-
-            int offset = 0;
-
-            int remaining = data.Length;
-
-            int Read(int bytes)
-            {
-                int readBytes = fstream.Read(data, offset, bytes);
-
-                remaining -= readBytes;
-
-                offset += readBytes;
-
-                return readBytes;
-            }
-
-            while (remaining > 0)
-            {
-                if (Read(remaining > 65536 ? 65536 : remaining) == 0)
-                {
-                    throw new Exception("Unable to read data");
-                }
-            }
-
-            foreach (string cvarData in data.ConvertToStr().Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                CVars.Add(new CVar(cvarData));
+                offset += currentChunk;
             }
         }
 
@@ -194,18 +185,15 @@ namespace CSGO_Config_Manager.Data
 
             int remaining = data.Length;
 
-            void Write(int bytes)
-            {
-                fstream.Write(data, offset, bytes);
-
-                remaining -= bytes;
-
-                offset += bytes;
-            }
-
             while (remaining > 0)
             {
-                Write(remaining > 65536 ? 65536 : remaining);
+                int currentChunk = remaining > 65536 ? 65536 : remaining;
+
+                fstream.Write(data, offset, currentChunk);
+
+                remaining -= currentChunk;
+
+                offset += currentChunk;
             }
         }
 

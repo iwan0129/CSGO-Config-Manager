@@ -22,13 +22,11 @@ namespace CSGO_Config_Manager.Tools
             }
         }
 
-        public static string ConvertToStr(this byte[] data)
+        public static string ConvertToChars(this byte[] data, int offset, int length)
         {
-            char[] charData = new char[data.Length];
+            char[] charData = new char[length - offset];
 
-            int offset = 0;
-
-            for (; offset < data.Length; offset++)
+            for (; offset < charData.Length; offset++)
             {
                 charData[offset] = (char)data[offset];
             }
