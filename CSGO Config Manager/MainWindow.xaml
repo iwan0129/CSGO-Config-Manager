@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="MainWin"
     Title="CSGO Config Manager"
-    Width="840.5"
+    Width="900.5"
     Height="468"
-    MinWidth="840.5"
+    MinWidth="900.5"
     MinHeight="468"
     Background="#FF302C2C"
     FontFamily="Consolas"
@@ -31,9 +31,9 @@
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="34*" />
+            <RowDefinition Height="33*" />
 
-            <RowDefinition Height="325*" />
+            <RowDefinition Height="404*" />
 
             <RowDefinition Height="0*" />
 
@@ -77,8 +77,6 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Height="34"
-            VerticalAlignment="Top"
             Background="#FF292727"
             FontSize="26"
             Foreground="White">
@@ -125,6 +123,7 @@
             Grid.Row="1"
             Grid.Column="1"
             Grid.ColumnSpan="1"
+            Height="30"
             VerticalAlignment="Top"
             Background="{x:Null}"
             CaretBrush="White"
