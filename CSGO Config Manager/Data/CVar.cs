@@ -14,7 +14,7 @@ namespace CSGO_Config_Manager.Data
             Value = value?.ToString();
         }
 
-        public CVar(string data)
+        public CVar(string data) : this()
         {
             string[] dataTypes = data.Split(new[] { "\"" }, 2, StringSplitOptions.None);
 
@@ -23,10 +23,6 @@ namespace CSGO_Config_Manager.Data
             if (dataTypes.Length >= 2)
             {
                 Value = dataTypes[1].Replace("\"", null).Replace("\t", null);
-            }
-            else
-            {
-                Value = null;
             }
         }
 
