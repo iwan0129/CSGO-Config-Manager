@@ -20,7 +20,7 @@ namespace CSGO_Config_Manager.Data
 
             Name = dataTypes[0];
 
-            if (dataTypes.Length == 2)
+            if (dataTypes.Length >= 2)
             {
                 Value = dataTypes[1].Replace("\"", null).Replace("\t", null);
             }
