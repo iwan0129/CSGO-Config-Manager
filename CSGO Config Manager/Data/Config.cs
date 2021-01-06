@@ -83,7 +83,7 @@ namespace CSGO_Config_Manager.Data
 
             StringBuilder strBuilder = new StringBuilder();
 
-            byte[] buffer = new byte[65536];
+            byte[] buffer = new byte[14456];
 
             int offset = 0;
 
@@ -97,9 +97,9 @@ namespace CSGO_Config_Manager.Data
                 {
                     strBuilder.Append(buffer.ConvertToChars(0, readBytes));
 
-                    remaining -= readBytes;
-
                     offset += readBytes;
+
+                    remaining -= readBytes;
                 }
             }
 
@@ -117,7 +117,7 @@ namespace CSGO_Config_Manager.Data
 
             StringBuilder strBuilder = new StringBuilder();
 
-            byte[] buffer = new byte[65536];
+            byte[] buffer = new byte[14456];
 
             int offset = 0;
 
@@ -131,9 +131,9 @@ namespace CSGO_Config_Manager.Data
                 {
                     strBuilder.Append(buffer.ConvertToChars(0, readBytes));
 
-                    remaining -= readBytes;
-
                     offset += readBytes;
+
+                    remaining -= readBytes;
                 }
             }
 
@@ -160,13 +160,13 @@ namespace CSGO_Config_Manager.Data
 
             while (remaining > 0)
             {
-                int currentChunk = remaining > 65536 ? 65536 : remaining;
+                int currentChunk = remaining > 14456 ? 14456 : remaining;
 
                 fstream.Write(data, offset, currentChunk);
 
-                remaining -= currentChunk;
-
                 offset += currentChunk;
+
+                remaining -= currentChunk;
             }
         }
 
@@ -187,7 +187,7 @@ namespace CSGO_Config_Manager.Data
 
             while (remaining > 0)
             {
-                int currentChunk = remaining > 65536 ? 65536 : remaining;
+                int currentChunk = remaining > 14456 ? 14456 : remaining;
 
                 fstream.Write(data, offset, currentChunk);
 
