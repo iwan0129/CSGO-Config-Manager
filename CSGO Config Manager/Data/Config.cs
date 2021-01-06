@@ -273,7 +273,7 @@ namespace CSGO_Config_Manager.Data
                 new CVar("r_eyeshift_z", 0),
                 new CVar("r_eyesize", 0),
                 new CVar("snd_mix_async", 1),
-                new CVar("snd_mixahead", 0.025),
+                new CVar("snd_mixahead", 1),
                 new CVar("snd_stream", 1),
                 new CVar("joystick", 1),
                 new CVar("joystick_force_disabled", 1),
