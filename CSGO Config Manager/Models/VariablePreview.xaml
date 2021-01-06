@@ -41,7 +41,6 @@
             CaretBrush="White"
             FontSize="34"
             Foreground="White"
-            IsReadOnly="True"
             PreviewKeyDown="NameBox_PreviewKeyDown"
             Text="viewmodel_offset_x"
             TextChanged="NameBox_TextChanged"

@@ -52,7 +52,7 @@ namespace CSGO_Config_Manager.Data
 
         public override string ToString()
         {
-            if (Value != null)
+            if (!string.IsNullOrEmpty(Value))
             {
                 return $"{Name} \"{Value}\"";
             }

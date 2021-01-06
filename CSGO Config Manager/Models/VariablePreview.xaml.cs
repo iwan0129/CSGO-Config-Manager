@@ -33,11 +33,6 @@ namespace CSGO_Config_Manager.Models
 
             CVar = cvar;
 
-            if (string.IsNullOrEmpty(cvar.Name))
-            {
-                NameBox.IsReadOnly = false;
-            }
-
             NameBox.Text = cvar.Name;
 
             ValueBox.Text = cvar.Value;
