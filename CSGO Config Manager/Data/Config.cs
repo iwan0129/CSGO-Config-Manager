@@ -79,39 +79,15 @@ namespace CSGO_Config_Manager.Data
 
         public void Load()
         {
-            using FileStream fstream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
-
-            StringBuilder strBuilder = new StringBuilder();
-
-            byte[] buffer = new byte[14456];
-
-            int offset = 0;
-
-            int remaining = (int)fstream.Length;
-
-            int readBytes;
-
-            while (remaining > 0)
-            {
-                if ((readBytes = fstream.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    strBuilder.Append(buffer.ConvertToChars(0, readBytes));
-
-                    offset += readBytes;
-
-                    remaining -= readBytes;
-                }
-            }
-
-            foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                CVars.Add(new CVar(cvarData));
-            }
+            Load(FilePath);
         }
 
         public void Load(string filePath)
         {
-            FilePath = filePath;
+            if (filePath != FilePath)
+            {
+                FilePath = filePath;
+            }
 
             using FileStream fstream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
@@ -137,7 +113,8 @@ namespace CSGO_Config_Manager.Data
                 }
             }
 
-            foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" }, 
+                StringSplitOptions.RemoveEmptyEntries))
             {
                 CVars.Add(new CVar(cvarData));
             }
@@ -145,29 +122,7 @@ namespace CSGO_Config_Manager.Data
 
         public void Save()
         {
-            using FileStream fstream = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-
-            if (fstream.Length > 0)
-            {
-                fstream.SetLength(0);
-            }
-
-            byte[] data = ToArray();
-
-            int offset = 0;
-
-            int remaining = data.Length;
-
-            while (remaining > 0)
-            {
-                int currentChunk = remaining > 14456 ? 14456 : remaining;
-
-                fstream.Write(data, offset, currentChunk);
-
-                offset += currentChunk;
-
-                remaining -= currentChunk;
-            }
+            Save(FilePath);
         }
 
         public void Save(string filePath)
