@@ -28,7 +28,7 @@ namespace CSGO_Config_Manager.Data
             }
         }
 
-        public static bool operator==(CVar cvar1, CVar cvar2)
+        public static bool operator ==(CVar cvar1, CVar cvar2)
         {
             return cvar1.Name == cvar2.Name && cvar1.Value == cvar2.Value;
         }

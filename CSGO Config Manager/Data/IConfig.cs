@@ -5,17 +5,17 @@ namespace CSGO_Config_Manager.Data
     internal interface IConfig
     {
         List<CVar> CVars { get; }
-        
+
         string FilePath { get; }
-        
+
         void Load();
-       
+
         void Save();
-       
+
         void Load(string filePath);
-       
+
         void Save(string filePath);
-        
+
         void Add(CVar cvar);
 
         void RemoveAt(int index);
@@ -24,6 +24,6 @@ namespace CSGO_Config_Manager.Data
 
         void GenerateDefault();
 
-        bool Remove(CVar cvar);     
+        bool Remove(CVar cvar);
     }
 }

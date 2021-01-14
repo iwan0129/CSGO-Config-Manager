@@ -113,7 +113,7 @@ namespace CSGO_Config_Manager.Data
                 }
             }
 
-            foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" }, 
+            foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" },
                 StringSplitOptions.RemoveEmptyEntries))
             {
                 CVars.Add(new CVar(cvarData));

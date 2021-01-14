@@ -94,7 +94,7 @@ namespace CSGO_Config_Manager
 
         private void VariableView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(VariableView, 
+            ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(VariableView,
                 (DependencyObject)e.OriginalSource);
 
             if (lbItem != null)
