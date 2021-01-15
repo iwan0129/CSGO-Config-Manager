@@ -94,8 +94,7 @@ namespace CSGO_Config_Manager
 
         private void VariableView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(VariableView,
-                (DependencyObject)e.OriginalSource);
+            ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(VariableView, (DependencyObject)e.OriginalSource);
 
             if (lbItem != null)
             {
@@ -124,9 +123,7 @@ namespace CSGO_Config_Manager
             {
                 if (!string.IsNullOrWhiteSpace(SearchBox.Text))
                 {
-                    SearchedSettings = Variables.Where(
-                        setting => setting.Name.Contains(SearchBox.Text))
-                        .ToList();
+                    SearchedSettings = Variables.Where(setting => setting.Name.Contains(SearchBox.Text)).ToList();
 
                     VariableView.ItemsSource = SearchedSettings;
 
