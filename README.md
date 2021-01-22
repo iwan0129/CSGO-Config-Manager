@@ -58,18 +58,13 @@
 Tool to Generate and Manage CSGO Config Files
 
 ### Built With
-.NET Framework 4.5 or Higher
+.NET Framework 4.5
 
 ## Getting Started
 
-<!-- ### Prerequisites
+### Prerequisites
+* .NET Framework 4.5 or Higher
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
--->
 ### Installation
 
 Clone the repo
