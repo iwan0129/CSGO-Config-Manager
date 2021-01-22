@@ -56,6 +56,7 @@
 ![product-screenshot]
 
 ### Built With
+C# 8.0<br>
 .NET Framework 4.5
 
 ## Getting Started
