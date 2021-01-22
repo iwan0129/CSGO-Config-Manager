@@ -55,8 +55,6 @@
 
 ![product-screenshot]
 
-Tool to Generate and Manage CSGO Config Files
-
 ### Built With
 .NET Framework 4.5
 
