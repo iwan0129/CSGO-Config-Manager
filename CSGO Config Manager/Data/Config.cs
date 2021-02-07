@@ -19,7 +19,7 @@ namespace CSGO_Config_Manager.Data
         {
             FilePath = filePath;
 
-            CVars = cvars?.ToList() ?? new List<CVar>();
+            CVars = cvars?.ToList() ?? new();
         }
 
         public void Add(CVar cvar)
@@ -89,9 +89,9 @@ namespace CSGO_Config_Manager.Data
                 FilePath = filePath;
             }
 
-            using FileStream fstream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            using FileStream fstream = new(filePath, FileMode.Open, FileAccess.Read);
 
-            StringBuilder strBuilder = new StringBuilder();
+            StringBuilder strBuilder = new();
 
             byte[] buffer = new byte[14456];
 
@@ -115,7 +115,7 @@ namespace CSGO_Config_Manager.Data
 
             foreach (string cvarData in strBuilder.ToString().Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
             {
-                CVars.Add(new CVar(cvarData));
+                CVars.Add(new(cvarData));
             }
         }
 
@@ -126,7 +126,7 @@ namespace CSGO_Config_Manager.Data
 
         public void Save(string filePath)
         {
-            using FileStream fstream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            using FileStream fstream = new(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
 
             if (fstream.Length > 0)
             {
@@ -153,7 +153,7 @@ namespace CSGO_Config_Manager.Data
 
         public byte[] ToArray()
         {
-            StringBuilder strBuilder = new StringBuilder();
+            StringBuilder strBuilder = new();
 
             int offset = 0;
 
@@ -190,49 +190,49 @@ namespace CSGO_Config_Manager.Data
 
             CVars = new List<CVar>()
             {
-                new CVar("viewmodel_fov", 68),
-                new CVar("viewmodel_offset_x", 2.5),
-                new CVar("viewmodel_offset_y", 0),
-                new CVar("viewmodel_offset_z", -1.5),
-                new CVar("viewmodel_recoil", 0),
-                new CVar("viewmodel_presetpos", 3),
-                new CVar("cl_viewmodel_shift_left_amt", 1.5),
-                new CVar("cl_viewmodel_shift_right_amt", 0.75),
-                new CVar("cl_bob_lower_amt", 21),
-                new CVar("cl_bobamt_lat", 0.33),
-                new CVar("cl_bobamt_vert", 0.14),
-                new CVar("cl_bobcycle", 0.98),
-                new CVar("cl_autowepswitch", 0),
-                new CVar("cl_autohelp", 0),
-                new CVar("cl_showhelp", 0),
-                new CVar("cl_cmdrate", 128),
-                new CVar("cl_updaterate", 128),
-                new CVar("cl_interp_ratio", 1),
-                new CVar("cl_interp", 0),
-                new CVar("cl_lagcompensation", 1),
-                new CVar("cl_predict", 1),
-                new CVar("cl_predictweapons", 1),
-                new CVar("cl_forcepreload", 1),
-                new CVar("tickrate", 128),
-                new CVar("m_rawinput", 1),
-                new CVar("m_mouseaccel1", 0),
-                new CVar("m_mouseaccel2", 0),
-                new CVar("fps_max", 0),
-                new CVar("r_dynamic", 1),
-                new CVar("r_drawtracers_firstperson", 0),
-                new CVar("r_eyegloss", 0),
-                new CVar("r_eyemove", 0),
-                new CVar("r_eyeshift_x", 0),
-                new CVar("r_eyeshift_y", 0),
-                new CVar("r_eyeshift_z", 0),
-                new CVar("r_eyesize", 0),
-                new CVar("snd_mix_async", 1),
-                new CVar("snd_mixahead", 1),
-                new CVar("snd_stream", 1),
-                new CVar("joystick", 1),
-                new CVar("joystick_force_disabled", 1),
-                new CVar("joystick_force_disabled_set_from_options", 1),
-                new CVar("host_writeconfig", null),
+                new("viewmodel_fov", 68),
+                new("viewmodel_offset_x", 2.5),
+                new("viewmodel_offset_y", 0),
+                new("viewmodel_offset_z", -1.5),
+                new("viewmodel_recoil", 0),
+                new("viewmodel_presetpos", 3),
+                new("cl_viewmodel_shift_left_amt", 1.5),
+                new("cl_viewmodel_shift_right_amt", 0.75),
+                new("cl_bob_lower_amt", 21),
+                new("cl_bobamt_lat", 0.33),
+                new("cl_bobamt_vert", 0.14),
+                new("cl_bobcycle", 0.98),
+                new("cl_autowepswitch", 0),
+                new("cl_autohelp", 0),
+                new("cl_showhelp", 0),
+                new("cl_cmdrate", 128),
+                new("cl_updaterate", 128),
+                new("cl_interp_ratio", 1),
+                new("cl_interp", 0),
+                new("cl_lagcompensation", 1),
+                new("cl_predict", 1),
+                new("cl_predictweapons", 1),
+                new("cl_forcepreload", 1),
+                new("tickrate", 128),
+                new("m_rawinput", 1),
+                new("m_mouseaccel1", 0),
+                new("m_mouseaccel2", 0),
+                new("fps_max", 0),
+                new("r_dynamic", 1),
+                new("r_drawtracers_firstperson", 0),
+                new("r_eyegloss", 0),
+                new("r_eyemove", 0),
+                new("r_eyeshift_x", 0),
+                new("r_eyeshift_y", 0),
+                new("r_eyeshift_z", 0),
+                new("r_eyesize", 0),
+                new("snd_mix_async", 1),
+                new("snd_mixahead", 1),
+                new("snd_stream", 1),
+                new("joystick", 1),
+                new("joystick_force_disabled", 1),
+                new("joystick_force_disabled_set_from_options", 1),
+                new("host_writeconfig", null),
             };
         }
     }

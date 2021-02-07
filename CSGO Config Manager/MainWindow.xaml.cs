@@ -17,14 +17,14 @@ namespace CSGO_Config_Manager
     {
         private readonly Config Config;
 
-        private readonly List<VariablePreview> Variables = new List<VariablePreview>();
+        private readonly List<VariablePreview> Variables = new();
 
-        private readonly OpenFileDialog OFD = new OpenFileDialog()
+        private readonly OpenFileDialog OFD = new()
         {
             Filter = "Config Files |*.cfg"
         };
 
-        private readonly SaveFileDialog SFD = new SaveFileDialog()
+        private readonly SaveFileDialog SFD = new()
         {
             Filter = "Config Files |*.cfg"
         };
@@ -39,7 +39,7 @@ namespace CSGO_Config_Manager
         {
             InitializeComponent();
 
-            Config = new Config();
+            Config = new();
 
             Variables.AddVariables(Config);
 
@@ -76,7 +76,7 @@ namespace CSGO_Config_Manager
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            CVar cvar = new CVar(null, 0);
+            CVar cvar = new(null, 0);
 
             Config.Add(cvar);
 

@@ -10,7 +10,7 @@ namespace CSGO_Config_Manager.Tools
         {
             foreach (CVar cvar in config.CVars)
             {
-                variables.Add(new VariablePreview(cvar));
+                variables.Add(new(cvar));
             }
         }
 
@@ -18,7 +18,7 @@ namespace CSGO_Config_Manager.Tools
         {
             foreach (CVar cvar in cvars)
             {
-                variables.Add(new VariablePreview(cvar));
+                variables.Add(new(cvar));
             }
         }
 

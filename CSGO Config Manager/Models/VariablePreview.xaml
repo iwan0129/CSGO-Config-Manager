@@ -42,7 +42,7 @@
             FontSize="34"
             Foreground="White"
             PreviewKeyDown="NameBox_PreviewKeyDown"
-            Text="viewmodel_offset_x"
+            Text="{Binding IsAsync=True, Mode=OneWay}"
             TextChanged="NameBox_TextChanged"
             TextWrapping="Wrap" />
 
@@ -56,7 +56,7 @@
             FontSize="34"
             Foreground="White"
             IsReadOnly="True"
-            Text="2"
+            Text="{Binding IsAsync=True, Mode=OneWay}"
             TextChanged="ValueBox_TextChanged"
             TextWrapping="Wrap" />
 
