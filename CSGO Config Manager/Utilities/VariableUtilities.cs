@@ -2,9 +2,9 @@
 using CSGO_Config_Manager.Models;
 using System.Collections.Generic;
 
-namespace CSGO_Config_Manager.Tools
+namespace CSGO_Config_Manager.Utilities
 {
-    internal static class Utilities
+    internal static class VariableUtilities
     {
         public static void AddVariables(this IList<VariablePreview> variables, IConfig config)
         {
@@ -20,18 +20,6 @@ namespace CSGO_Config_Manager.Tools
             {
                 variables.Add(new(cvar));
             }
-        }
-
-        public static string ConvertToChars(this byte[] data, int offset, int length)
-        {
-            char[] charData = new char[length - offset];
-
-            for (; offset < charData.Length; offset++)
-            {
-                charData[offset] = (char)data[offset];
-            }
-
-            return new string(charData, 0, offset);
         }
     }
 }

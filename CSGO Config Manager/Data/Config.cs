@@ -1,4 +1,4 @@
-﻿using CSGO_Config_Manager.Tools;
+﻿using CSGO_Config_Manager.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;

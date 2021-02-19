@@ -1,6 +1,6 @@
 ﻿using CSGO_Config_Manager.Data;
 using CSGO_Config_Manager.Models;
-using CSGO_Config_Manager.Tools;
+using CSGO_Config_Manager.Utilities;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Linq;
