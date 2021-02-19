@@ -56,12 +56,13 @@
 ![product-screenshot]
 
 ### Built With
-C# 8.0<br>
+C# 9.0<br>
 .NET Framework 4.5
 
 ## Getting Started
 
 ### Prerequisites
+* .NET 5
 * .NET Framework 4.5 or Higher
 
 ### Installation
