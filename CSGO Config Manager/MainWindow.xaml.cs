@@ -29,9 +29,9 @@ namespace CSGO_Config_Manager
             Filter = "Config Files |*.cfg"
         };
 
-        private ICollection<VariablePreview> SearchedSettings;
+        private ICollection<VariablePreview> searchedSettings;
 
-        private bool FirstTime = true;
+        private bool firstTime = true;
 
         private VariablePreview SelectedSetting { get; set; }
 
@@ -123,9 +123,9 @@ namespace CSGO_Config_Manager
             {
                 if (!string.IsNullOrWhiteSpace(SearchBox.Text))
                 {
-                    SearchedSettings = Variables.Where(setting => setting.Name.Contains(SearchBox.Text)).ToList();
+                    searchedSettings = Variables.Where(setting => setting.Name.Contains(SearchBox.Text)).ToList();
 
-                    VariableView.ItemsSource = SearchedSettings;
+                    VariableView.ItemsSource = searchedSettings;
 
                     VariableView.Items.Refresh();
                 }
@@ -140,11 +140,11 @@ namespace CSGO_Config_Manager
 
         private void SearchBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (FirstTime)
+            if (firstTime)
             {
                 SearchBox.Text = null;
 
-                FirstTime = false;
+                firstTime = false;
             }
         }
 
@@ -154,14 +154,14 @@ namespace CSGO_Config_Manager
             {
                 Variables.Remove(setting);
 
-                SearchedSettings?.Remove(setting);
+                searchedSettings?.Remove(setting);
             }
 
             if (SelectedSetting != null)
             {
                 Variables.Remove(SelectedSetting);
 
-                SearchedSettings?.Remove(SelectedSetting);
+                searchedSettings?.Remove(SelectedSetting);
             }
 
             VariableView.Items.Refresh();
@@ -173,13 +173,13 @@ namespace CSGO_Config_Manager
 
             Variables.Clear();
 
-            SearchedSettings?.Clear();
+            searchedSettings?.Clear();
 
             Variables.AddVariables(Config);
 
             VariableView.Items.Refresh();
 
-            if (!FirstTime)
+            if (!firstTime)
             {
                 string searchVal = SearchBox.Text;
 
@@ -195,7 +195,7 @@ namespace CSGO_Config_Manager
 
             Variables.Clear();
 
-            SearchedSettings?.Clear();
+            searchedSettings?.Clear();
 
             VariableView.Items.Refresh();
         }

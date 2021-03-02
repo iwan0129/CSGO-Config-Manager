@@ -9,7 +9,7 @@ namespace CSGO_Config_Manager.Data
 {
     internal class Config : IConfig, IDisposable
     {
-        private bool Disposed;
+        private bool disposed;
 
         public List<CVar> CVars { get; private set; }
 
@@ -52,9 +52,9 @@ namespace CSGO_Config_Manager.Data
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!Disposed)
+            if (!disposed)
             {
-                Disposed = true;
+                disposed = true;
 
                 if (disposing)
                 {
