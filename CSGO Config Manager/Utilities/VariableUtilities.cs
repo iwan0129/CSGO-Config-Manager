@@ -1,9 +1,6 @@
 ﻿using CSGO_Config_Manager.Data;
 using CSGO_Config_Manager.Models;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows.Controls;
 
 namespace CSGO_Config_Manager.Utilities
 {
