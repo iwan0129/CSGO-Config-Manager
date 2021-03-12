@@ -1,6 +1,9 @@
 ﻿using CSGO_Config_Manager.Data;
 using CSGO_Config_Manager.Models;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Controls;
 
 namespace CSGO_Config_Manager.Utilities
 {
@@ -19,6 +22,18 @@ namespace CSGO_Config_Manager.Utilities
             foreach (CVar cvar in cvars)
             {
                 variables.Add(new(cvar));
+            }
+        }
+
+        public static void RefreshSortDescriptions(this ItemCollection itemCollection)
+        {
+            SortDescription[] sortDescriptions = itemCollection.SortDescriptions.ToArray();
+
+            itemCollection.SortDescriptions.Clear();
+
+            foreach (SortDescription sortDescription in sortDescriptions)
+            {
+                itemCollection.SortDescriptions.Add(sortDescription);
             }
         }
     }

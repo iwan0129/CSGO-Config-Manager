@@ -29,8 +29,6 @@ namespace CSGO_Config_Manager
             Filter = "Config Files |*.cfg"
         };
 
-        private ICollection<VariablePreview> searchedSettings;
-
         private bool firstTime = true;
 
         private VariablePreview SelectedSetting { get; set; }
@@ -121,20 +119,9 @@ namespace CSGO_Config_Manager
         {
             if (Variables.Count > 0)
             {
-                if (!string.IsNullOrWhiteSpace(SearchBox.Text))
-                {
-                    searchedSettings = Variables.Where(setting => setting.Name.Contains(SearchBox.Text)).ToList();
-
-                    VariableView.ItemsSource = searchedSettings;
-
-                    VariableView.Items.Refresh();
-                }
-                else
-                {
-                    VariableView.ItemsSource = Variables;
-
-                    VariableView.Items.Refresh();
-                }
+                VariableView.Items.Filter = !string.IsNullOrWhiteSpace(SearchBox.Text)
+                    ? (variable) => ((VariablePreview)variable).Name.Contains(SearchBox.Text)
+                    : null;
             }
         }
 
@@ -153,15 +140,11 @@ namespace CSGO_Config_Manager
             foreach (VariablePreview setting in VariableView.SelectedItems)
             {
                 Variables.Remove(setting);
-
-                searchedSettings?.Remove(setting);
             }
 
             if (SelectedSetting != null)
             {
                 Variables.Remove(SelectedSetting);
-
-                searchedSettings?.Remove(SelectedSetting);
             }
 
             VariableView.Items.Refresh();
@@ -172,8 +155,6 @@ namespace CSGO_Config_Manager
             Config.GenerateDefault();
 
             Variables.Clear();
-
-            searchedSettings?.Clear();
 
             Variables.AddVariables(Config);
 
@@ -194,8 +175,6 @@ namespace CSGO_Config_Manager
             Config.Clear();
 
             Variables.Clear();
-
-            searchedSettings?.Clear();
 
             VariableView.Items.Refresh();
         }
