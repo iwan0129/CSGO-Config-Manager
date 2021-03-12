@@ -24,17 +24,5 @@ namespace CSGO_Config_Manager.Utilities
                 variables.Add(new(cvar));
             }
         }
-
-        public static void RefreshSortDescriptions(this ItemCollection itemCollection)
-        {
-            SortDescription[] sortDescriptions = itemCollection.SortDescriptions.ToArray();
-
-            itemCollection.SortDescriptions.Clear();
-
-            foreach (SortDescription sortDescription in sortDescriptions)
-            {
-                itemCollection.SortDescriptions.Add(sortDescription);
-            }
-        }
     }
 }
