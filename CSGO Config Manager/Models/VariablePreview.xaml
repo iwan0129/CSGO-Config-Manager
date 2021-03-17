@@ -2,6 +2,7 @@
     x:Class="CSGO_Config_Manager.Models.VariablePreview"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Data="clr-namespace:CSGO_Config_Manager.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CSGO_Config_Manager.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,26 +12,32 @@
     SnapsToDevicePixels="True"
     mc:Ignorable="d">
 
+    <UserControl.DataContext>
+
+        <Data:CVar xml:space="preserve" />
+
+    </UserControl.DataContext>
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
-            
+
             <RowDefinition Height="0*" />
-            
+
             <RowDefinition />
-            
+
             <RowDefinition Height="0*" />
-            
+
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
-            
+
             <ColumnDefinition Width="0*" />
-            
+
             <ColumnDefinition Width="481*" />
-            
+
             <ColumnDefinition Width="319*" />
-            
+
         </Grid.ColumnDefinitions>
 
         <TextBox
@@ -42,7 +49,7 @@
             FontSize="34"
             Foreground="White"
             PreviewKeyDown="NameBox_PreviewKeyDown"
-            Text="{Binding IsAsync=True, Mode=OneWay}"
+            Text="{Binding Name, IsAsync=True, Mode=OneWay}"
             TextChanged="NameBox_TextChanged"
             TextWrapping="Wrap" />
 
@@ -56,7 +63,7 @@
             FontSize="34"
             Foreground="White"
             IsReadOnly="True"
-            Text="{Binding IsAsync=True, Mode=OneWay}"
+            Text="{Binding Value, IsAsync=True, Mode=OneWay}"
             TextChanged="ValueBox_TextChanged"
             TextWrapping="Wrap" />
 

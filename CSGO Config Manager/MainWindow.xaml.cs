@@ -41,9 +41,7 @@ namespace CSGO_Config_Manager
 
             Variables.AddVariables(Config);
 
-            VariableView.ItemsSource = Variables;
-
-            VariableView.Items.Refresh();
+            VariableView.DataContext = Variables;
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)

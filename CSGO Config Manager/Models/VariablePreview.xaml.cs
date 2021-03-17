@@ -33,9 +33,7 @@ namespace CSGO_Config_Manager.Models
 
             CVar = cvar;
 
-            NameBox.Text = cvar.Name;
-
-            ValueBox.Text = cvar.Value;
+            DataContext = cvar;
         }
 
         private void NameBox_PreviewKeyDown(object sender, KeyEventArgs e)
