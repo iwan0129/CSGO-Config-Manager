@@ -38,10 +38,8 @@ namespace CSGO_Config_Manager.Models
 
         private void NameBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (!string.IsNullOrEmpty(NameBox.Text) && e.Key == Key.Enter)
-            {
-                NameBox.IsReadOnly = true;
-            }
+            NameBox.IsReadOnly = !string.IsNullOrEmpty(NameBox.Text)
+                && e.Key == Key.Enter;
         }
 
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)

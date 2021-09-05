@@ -45,7 +45,7 @@ namespace CSGO_Config_Manager.Data
             }
         }
 
-        public void SyncWith<CVars>(CVars cvars) where CVars : notnull, IEnumerable<CVar>
+        public void SyncWith<CVars>(CVars cvars) where CVars : IEnumerable<CVar>
         {
             this.CVars = cvars.ToList();
         }
@@ -157,25 +157,14 @@ namespace CSGO_Config_Manager.Data
         {
             StringBuilder strBuilder = new();
 
-            int offset = 0;
-
-            int length = CVars.Count - 1;
-
             foreach (CVar cvar in CVars)
             {
-                if (offset++ < length)
-                {
-                    strBuilder.Append(cvar).Append("\n");
-                }
-                else
-                {
-                    strBuilder.Append(cvar);
-                }
+                strBuilder.Append($"{cvar}\n");
             }
 
             byte[] data = new byte[strBuilder.Length];
 
-            for (offset = 0; offset < strBuilder.Length; offset++)
+            for (int offset = 0; offset < strBuilder.Length; offset++)
             {
                 data[offset] = (byte)strBuilder[offset];
             }
@@ -190,7 +179,7 @@ namespace CSGO_Config_Manager.Data
                 CVars.Clear();
             }
 
-            CVars = new List<CVar>()
+            CVars = new()
             {
                 new("viewmodel_fov", 68),
                 new("viewmodel_offset_x", 2.5),

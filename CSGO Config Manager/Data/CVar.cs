@@ -29,7 +29,8 @@ namespace CSGO_Config_Manager.Data
 
         public static bool operator ==(CVar cvar1, CVar cvar2)
         {
-            return cvar1.Name == cvar2.Name && cvar1.Value == cvar2.Value;
+            return cvar1.Name == cvar2.Name
+                && cvar1.Value == cvar2.Value;
         }
 
         public static bool operator !=(CVar cvar1, CVar cvar2)
@@ -49,12 +50,9 @@ namespace CSGO_Config_Manager.Data
 
         public override string ToString()
         {
-            if (!string.IsNullOrEmpty(Value))
-            {
-                return $"{Name} \"{Value}\"";
-            }
-
-            return $"{Name}\n";
+            return !string.IsNullOrEmpty(Value)
+                ? $"{Name} \"{Value}\""
+                : $"{Name}\n";
         }
     }
 }

@@ -90,26 +90,17 @@ namespace CSGO_Config_Manager
 
         private void VariableView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            ListBoxItem lbItem = (ListBoxItem)ItemsControl.ContainerFromElement(VariableView, (DependencyObject)e.OriginalSource);
+            ListBoxItem item = (ListBoxItem)ItemsControl.ContainerFromElement(VariableView, (DependencyObject)e.OriginalSource);
 
-            if (lbItem != null)
+            if (item != null)
             {
-                SelectedSetting = (VariablePreview)lbItem.Content;
+                SelectedSetting = (VariablePreview)item.Content;
 
-                switch (e.ChangedButton)
+                SelectedSetting.IsNameReadOnly = SelectedSetting.IsValueReadOnly = e.ChangedButton switch
                 {
-                    case MouseButton.Left:
-
-                        SelectedSetting.IsNameReadOnly = SelectedSetting.IsValueReadOnly = false;
-
-                        break;
-
-                    case MouseButton.Right:
-
-                        SelectedSetting.IsNameReadOnly = SelectedSetting.IsValueReadOnly = true;
-
-                        break;
-                }
+                    MouseButton.Right => true,
+                    _ => false
+                };
             }
         }
 
