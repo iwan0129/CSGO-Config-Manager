@@ -17,14 +17,13 @@ namespace CSGO_Config_Manager.Data
 
         public CVar(string data) : this()
         {
-            string[] dataTypes = data.Split(new[] { "\"" }, 2, StringSplitOptions.None);
+            string[] dataTypes = data.Split(new[] { " " }, 2, StringSplitOptions.RemoveEmptyEntries);
 
             Name = dataTypes[0];
 
-            if (dataTypes.Length >= 2)
-            {
-                Value = dataTypes[1].Replace("\"", null).Replace("\t", null);
-            }
+            Value = dataTypes.Length > 1
+                ? dataTypes[1].Replace("\"", null)
+                : null;
         }
 
         public static bool operator ==(CVar cvar1, CVar cvar2)
@@ -50,9 +49,7 @@ namespace CSGO_Config_Manager.Data
 
         public override string ToString()
         {
-            return !string.IsNullOrEmpty(Value)
-                ? $"{Name} \"{Value}\""
-                : $"{Name}\n";
+            return $"{Name} {(!string.IsNullOrEmpty(Value) ? $"\"{Value}\"" : null)}";
         }
     }
 }

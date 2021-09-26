@@ -15,6 +15,8 @@ namespace CSGO_Config_Manager.Data
 
         public string FilePath { get; private set; }
 
+        public Encoding Encoding { get; set; } = Encoding.UTF8;
+
         public Config(string filePath = null, IEnumerable<CVar> cvars = null)
         {
             FilePath = filePath;
@@ -162,14 +164,7 @@ namespace CSGO_Config_Manager.Data
                 strBuilder.Append($"{cvar}\n");
             }
 
-            byte[] data = new byte[strBuilder.Length];
-
-            for (int offset = 0; offset < strBuilder.Length; offset++)
-            {
-                data[offset] = (byte)strBuilder[offset];
-            }
-
-            return data;
+            return Encoding.GetBytes(strBuilder.ToString());
         }
 
         public void GenerateDefault()
