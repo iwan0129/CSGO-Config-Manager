@@ -194,6 +194,7 @@ namespace CSGO_Config_Manager.Data
                 new("cl_bobamt_vert", 0.14),
                 new("cl_bobcycle", 0.98),
                 new("cl_autowepswitch", 0),
+                new("cl_crosshair_outlinethickness", 1),
                 new("cl_autohelp", 0),
                 new("cl_showhelp", 0),
                 new("cl_cmdrate", 128),
