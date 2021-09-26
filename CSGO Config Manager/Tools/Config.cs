@@ -1,5 +1,5 @@
-﻿using CSGO_Config_Manager.Data;
-using CSGO_Config_Manager.Utilities;
+﻿using CSGO_Config_Manager.Interfaces;
+using CSGO_Config_Manager.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -94,13 +94,11 @@ namespace CSGO_Config_Manager.Tools
 
             using FileStream fstream = new(filePath, FileMode.Open, FileAccess.Read);
 
-            StringBuilder strBuilder = new();
-
-            byte[] buffer = new byte[14456];
+            byte[] buffer = new byte[fstream.Length];
 
             int offset = 0;
 
-            int remaining = (int)fstream.Length;
+            int remaining = buffer.Length;
 
             int readBytes;
 
@@ -108,17 +106,14 @@ namespace CSGO_Config_Manager.Tools
             {
                 if ((readBytes = fstream.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    strBuilder.Append(buffer.ConvertToChars(0, readBytes));
-
                     offset += readBytes;
 
                     remaining -= readBytes;
                 }
             }
 
-            foreach (string cvarData in strBuilder
-                .ToString()
-                .Split(new[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string cvarData in Encoding.GetString(buffer, 0, offset)
+                .Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
             {
                 CVars.Add(new(cvarData));
             }

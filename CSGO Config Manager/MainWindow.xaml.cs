@@ -1,10 +1,9 @@
-﻿using CSGO_Config_Manager.Data;
+﻿using CSGO_Config_Manager.Controls;
 using CSGO_Config_Manager.Models;
 using CSGO_Config_Manager.Tools;
 using CSGO_Config_Manager.Utilities;
 using Microsoft.Win32;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -65,8 +64,6 @@ namespace CSGO_Config_Manager
         {
             if (SFD?.ShowDialog() ?? false)
             {
-                Config.SyncWith(from setting in Variables select setting.CVar);
-
                 Config.Save(SFD.FileName);
             }
         }

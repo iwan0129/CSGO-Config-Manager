@@ -1,4 +1,5 @@
-﻿using CSGO_Config_Manager.Data;
+﻿using CSGO_Config_Manager.Controls;
+using CSGO_Config_Manager.Interfaces;
 using CSGO_Config_Manager.Models;
 using System.Collections.Generic;
 

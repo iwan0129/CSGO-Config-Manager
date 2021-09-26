@@ -1,22 +1,17 @@
 ﻿<UserControl
-    x:Class="CSGO_Config_Manager.Models.VariablePreview"
+    x:Class="CSGO_Config_Manager.Controls.VariablePreview"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Data="clr-namespace:CSGO_Config_Manager.Data"
+    xmlns:Models="clr-namespace:CSGO_Config_Manager.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:CSGO_Config_Manager.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="SettingPrev"
     Height="46"
+    d:DataContext="{d:DesignInstance Type=Models:CVar,
+                                     IsDesignTimeCreatable=False}"
     d:DesignWidth="800"
     SnapsToDevicePixels="True"
     mc:Ignorable="d">
-
-    <UserControl.DataContext>
-
-        <Data:CVar xml:space="preserve" />
-
-    </UserControl.DataContext>
 
     <Grid>
 
@@ -49,8 +44,7 @@
             FontSize="34"
             Foreground="White"
             PreviewKeyDown="NameBox_PreviewKeyDown"
-            Text="{Binding Name, IsAsync=True, Mode=OneWay}"
-            TextChanged="NameBox_TextChanged"
+            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="Wrap" />
 
         <TextBox
@@ -63,8 +57,7 @@
             FontSize="34"
             Foreground="White"
             IsReadOnly="True"
-            Text="{Binding Value, IsAsync=True, Mode=OneWay}"
-            TextChanged="ValueBox_TextChanged"
+            Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="Wrap" />
 
     </Grid>

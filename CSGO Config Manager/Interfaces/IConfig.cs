@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CSGO_Config_Manager.Models;
+using System.Collections.Generic;
 
-namespace CSGO_Config_Manager.Data
+namespace CSGO_Config_Manager.Interfaces
 {
     internal interface IConfig
     {

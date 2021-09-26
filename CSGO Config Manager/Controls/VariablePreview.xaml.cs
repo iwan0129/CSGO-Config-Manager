@@ -1,15 +1,15 @@
-﻿using CSGO_Config_Manager.Data;
+﻿using CSGO_Config_Manager.Models;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace CSGO_Config_Manager.Models
+namespace CSGO_Config_Manager.Controls
 {
     /// <summary>
     /// Interaction logic for SettingPreview.xaml
     /// </summary>
     public partial class VariablePreview : UserControl
     {
-        internal CVar CVar;
+        internal CVar CVar => (CVar)DataContext;
 
         public bool IsNameReadOnly
         {
@@ -31,8 +31,6 @@ namespace CSGO_Config_Manager.Models
         {
             InitializeComponent();
 
-            CVar = cvar;
-
             DataContext = cvar;
         }
 
@@ -40,16 +38,6 @@ namespace CSGO_Config_Manager.Models
         {
             NameBox.IsReadOnly = !string.IsNullOrEmpty(NameBox.Text)
                 && e.Key == Key.Enter;
-        }
-
-        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CVar.Name = NameBox.Text;
-        }
-
-        private void ValueBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CVar.Value = ValueBox.Text;
         }
     }
 }

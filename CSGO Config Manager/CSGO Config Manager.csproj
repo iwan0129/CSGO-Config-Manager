@@ -58,7 +58,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Utilities\VariableUtilities.cs" />
-    <Compile Include="Utilities\Utilities.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,19 +67,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tools\Config.cs" />
-    <Compile Include="Data\CVar.cs" />
-    <Compile Include="Data\IConfig.cs" />
+    <Compile Include="Models\CVar.cs" />
+    <Compile Include="Interfaces\IConfig.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Models\VariablePreview.xaml">
+    <Page Include="Controls\VariablePreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\VariablePreview.xaml.cs">
+    <Compile Include="Controls\VariablePreview.xaml.cs">
       <DependentUpon>VariablePreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

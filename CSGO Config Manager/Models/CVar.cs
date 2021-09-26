@@ -1,12 +1,17 @@
 ﻿using System;
 
-namespace CSGO_Config_Manager.Data
+namespace CSGO_Config_Manager.Models
 {
-    internal struct CVar
+    internal class CVar
     {
         public string Name { get; set; }
 
         public string Value { get; set; }
+
+        public CVar()
+        {
+
+        }
 
         public CVar(string name, object value)
         {
@@ -17,13 +22,24 @@ namespace CSGO_Config_Manager.Data
 
         public CVar(string data)
         {
-            string[] dataTypes = data.Split(new[] { " " }, 2, StringSplitOptions.RemoveEmptyEntries);
+            bool isComment = data[0] == '/' && data[1] == '/';
 
-            Name = dataTypes[0];
+            string[] dataTypes = data.Split(new[] { " " }, isComment ? 1 : 3, StringSplitOptions.RemoveEmptyEntries);
+
+            int valueOffset = dataTypes.Length - 1;
+
+            Name = dataTypes.Length == 3
+                ? $"{dataTypes[0]} {dataTypes[1]}"
+                : dataTypes[0];
 
             Value = dataTypes.Length > 1
-                ? dataTypes[1].Replace("\"", null)
+                ? dataTypes[valueOffset].Replace("\"", null)
                 : null;
+        }
+
+        ~CVar()
+        {
+            Name = Value = null;
         }
 
         public static bool operator ==(CVar cvar1, CVar cvar2)
