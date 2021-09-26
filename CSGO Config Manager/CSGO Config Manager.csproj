@@ -67,7 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\Config.cs" />
+    <Compile Include="Tools\Config.cs" />
     <Compile Include="Data\CVar.cs" />
     <Compile Include="Data\IConfig.cs" />
     <Compile Include="MainWindow.xaml.cs">

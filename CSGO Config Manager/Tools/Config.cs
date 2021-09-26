@@ -1,11 +1,12 @@
-﻿using CSGO_Config_Manager.Utilities;
+﻿using CSGO_Config_Manager.Data;
+using CSGO_Config_Manager.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace CSGO_Config_Manager.Data
+namespace CSGO_Config_Manager.Tools
 {
     internal class Config : IConfig, IDisposable
     {

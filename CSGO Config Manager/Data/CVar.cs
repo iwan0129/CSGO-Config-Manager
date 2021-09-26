@@ -15,7 +15,7 @@ namespace CSGO_Config_Manager.Data
             Value = value?.ToString();
         }
 
-        public CVar(string data) : this()
+        public CVar(string data)
         {
             string[] dataTypes = data.Split(new[] { " " }, 2, StringSplitOptions.RemoveEmptyEntries);
 
